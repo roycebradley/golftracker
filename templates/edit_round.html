@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Round</h2>
+<form method="post">
+    <label>Date: <input type="date" name="date" value="{{ round.date }}" required></label><br><br>
+    <label>Course: <input type="text" name="course" value="{{ round.course }}" required></label><br><br>
+    <label>Score: <input type="number" name="score" value="{{ round.score }}" required></label><br><br>
+    <label>Notes:<br>
+    <textarea name="notes" rows="3" cols="30">{{ round.notes }}</textarea></label><br><br>
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

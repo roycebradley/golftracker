@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Golf Round Tracker</title>
+</head>
+<body>
+    <h1>Golf Round Tracker</h1>
+    <a href="{{ url_for('index') }}">Home</a> |
+    <a href="{{ url_for('add_round') }}">Add Round</a>
+    <hr />
+    {% block content %}{% endblock %}
+</body>
+</html>
