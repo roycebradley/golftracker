@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Golf Round Tracker</title>
 </head>
 <body>
     <h1>Golf Round Tracker</h1>
-    <a href="{{ url_for('index') }}">Home</a> |
-    <a href="{{ url_for('add_round') }}">Add Round</a>
-    <hr />
+
+    {% if current_user.is_authenticated %}
+        <p>
+            Welcome, {{ current_user.username }} |
+            <a href="{{ url_for('index') }}">Home</a> |
+            <a href="{{ url_for('add_round') }}">Add Round</a> |
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="{{ url_for('index') }}">Home</a> |
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('register') }}">Register</a>
+        </p>
+    {% endif %}
+
+    <hr>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul style="list-style: none; padding: 0;">
+            {% for msg in messages %}
+                <li style="color: green; font-weight: bold;">{{ msg }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+
     {% block content %}{% endblock %}
 </body>
 </html>
